@@ -11,6 +11,7 @@ $(function(){
     })
 
   var form = layui.form
+  var layer = layui.layer
   form.verify({
     username: function(value, item){ //value：表单的值、item：表单的DOM对象
         if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
@@ -36,4 +37,37 @@ $(function(){
       }
   })
 
+  //注册
+  $("#form_reg").on("submit",function(e){
+    e.preventDefault() //单词不要写错了
+    var data = {
+      username: $('#form_reg [name=username]').val(),
+      password: $('#form_reg [name=password]').val()
+    }
+    $.post('/api/reguser',data,function(res){
+      if(res.status !=0){
+      return  layer.msg(res.message); 
+      }
+      layer.msg(res.message); 
+      $("#reg_box").click()
+    })
+  })
+
+  //登录
+  $("#form_login").submit(function(e){
+    e.preventDefault()
+    $.ajax({
+      url:'/api/login',
+      type:'POST',
+      data:$(this).serialize(),
+      success:function(res){
+        if(res.status!==0){
+          return layer.msg('登录失败')
+        }
+        layer.msg('登陆成功')
+        localStorage.setItem('token',res.token)
+        location.href ='index.html'
+      }
+    })
+  })
 })
