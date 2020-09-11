@@ -20,7 +20,7 @@
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
                     <a class="userinfo" href="javascript:;">
-                    <!-- <span class="text-avatar">A</span>   -->
+                    <span class="text-avatar">A</span>  
                        
                         <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
                         个人中心
@@ -32,7 +32,7 @@
 
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href=""><span class="iconfont icon-tuichu"></span>退出</a></li>
+                <li class="layui-nav-item"><a href="javascript:;" class="btn"><span class="iconfont icon-tuichu"></span>退出</a></li>
             </ul>
         </div>
 
@@ -41,7 +41,7 @@
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
                 <div class="userinfo" href="javascript:;">
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    <span class="text-avatar">A</span> 欢迎**
+                    <span class="text-avatar">A</span> <span id="welcome"></span>
                 </div>
                 <!--  lay-shrink="all" 控制其他子菜单是否同时打开 -->
                 <ul class="layui-nav layui-nav-tree" lay-shrink="all">
@@ -81,6 +81,9 @@
     </div>
 
     <script src="/assets/lib/layui/layui.all.js"></script>
+    <script src="/assets/lib/jquery.js"></script>
+    <script src="/assets/js/baseAPI.js"></script>
+    <script src="/assets/js/index.js"></script>
 </body>
 
 </html>
