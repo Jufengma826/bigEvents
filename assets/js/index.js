@@ -25,6 +25,7 @@ $(function(){
            }
        })
     }
+    window.getuserinfo = getuserinfo
     //渲染数据函数
     function renderData(user){
         //渲染名字
