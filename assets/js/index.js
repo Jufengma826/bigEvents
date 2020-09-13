@@ -2,26 +2,9 @@ $(function () {
     var layer = layui.layer
     getuserinfo()
     //获取数据
-<<<<<<< HEAD
-    function getuserinfo(){
-       $.ajax({
-           url:'/my/userinfo',
-           type:'GET',
-           
-           success:function(res){
-                
-               if(res.status !==0){
-                   return layer.msg('获取数据失败')
-               }
-               layer.msg('获取数据成功')
-                
-               //渲染数据到页面上
-               renderData(res.data)
-           }
-      
 
-       })
-=======
+ 
+
     function getuserinfo() {
         $.ajax({
             url: '/my/userinfo',
@@ -44,7 +27,7 @@ $(function () {
                 }
             }
         })
->>>>>>> person
+
     }
     window.getuserinfo = getuserinfo
     //渲染数据函数
