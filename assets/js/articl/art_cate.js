@@ -1,7 +1,8 @@
 $(function () {
-    var layer = layui.layer
-    //获取文章类别信息
 
+    var layer = layui.layer
+    var form = layui.form
+    //获取文章类别信息
     var layer = layui.layer
     getCate()
     function getCate() {
@@ -23,7 +24,7 @@ $(function () {
 
     }
 
-
+    //添加表单弹出框
     var addindex = null
     $('#addcatebtn').click(function () {
         addindex = layer.open({
@@ -56,5 +57,50 @@ $(function () {
         })
     })
 
+    //编辑分类
+    var editindex = null
+    $('body').on('click', '.editcate', function () {
+        editindex = layer.open({
+            type: 1,
+            area: ['500px', '250px'],
+            title: '修改文章分类'
+            , content: $('#dialogedit').html()
+        });
+    //获取Id
+    var cateid = $(this).attr('data-id')
+  
+    //把数据渲染到弹出框上
+    $.ajax({
+        url:`/my/article/cates/${cateid}`,
+        type:'GET',
+        success:function(res){
+            if(res.status !==0){
+                return layer.msg('获取数据失败')
+            }
+             layer.msg('获取数据成功')
+             form.val('formedit',res.data)
+        }
+    })
 
+    })
+
+    //修改分类
+    $('body').on('submit','#form-edit',function(e){
+        e.preventDefault()
+
+        $.ajax({
+            url:'/my/article/updatecate',
+            type:'POST',
+            data:$(this).serialize(),
+            success:function(res){
+                 
+                if(res.status !==0){
+                    return layer.msg('修改失败')
+                }
+                layer.msg('修改成功')
+                layer.close(editindex)
+                getCate()
+            }
+        })
+    })
 })
