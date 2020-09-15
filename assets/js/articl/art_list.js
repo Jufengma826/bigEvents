@@ -16,7 +16,7 @@ $(function () {
             type:'GET',
             data:q,
             success:function(res){
-                console.log(res);
+               // console.log(res);
                  if(res.status !==0){
                      return layer.msg('失败')
                  }

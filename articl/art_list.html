@@ -16,19 +16,19 @@
             <!-- 筛选区域 -->
             <form class="layui-form" id="shaixuan">
                 <div class="layui-form-item layui-inline">
-                    <select name="cate_id" lay-verify="">
+                    <select name="cate_id">
 
                     </select>
                 </div>
                 <div class="layui-form-item layui-inline">
-                    <select name="state" lay-verify="">
+                    <select name="state">
                         <option value="">状态</option>
                         <option value="已发布">已发布</option>
                         <option value="草稿">草稿</option>
                     </select>
                 </div>
                 <div class="layui-form-item layui-inline">
-                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">筛选</button>
                 </div>
             </form>
             <!-- 文章列表区域 -->
@@ -74,14 +74,14 @@
     {{/each}}
     </script>
 
-    <!-- 分类名称模板 -->
+    <!-- 文章筛选分类名称模板 -->
     <script type="text/html" id="cateId">
     <option value="">所有分类</option>
      {{each data}}
      <option value="{{$value.Id}}">{{$value.name}}</option>
     {{/each}}
 </script>
-    <script src="/assets/lib/layui/layui.all.js"></script>
+    <script src="/assets/lib/layui/lay.0ui.all.js"></script>
     <script src="/assets/lib/jquery.js"></script>
     <script src="/assets/js/baseAPI.js"></script>
     <script src="/assets/lib/template-web.js"></script>
