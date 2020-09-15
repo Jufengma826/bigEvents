@@ -1,4 +1,5 @@
 $(function () {
+
   var layer = layui.layer
   var form = layui.form
   var laypage = layui.laypage
@@ -17,7 +18,7 @@ $(function () {
       type: 'GET',
       data: q,
       success: function (res) {
-        // console.log(res);
+        
         if (res.status !== 0) {
           return layer.msg('失败')
         }
@@ -31,7 +32,7 @@ $(function () {
     })
   }
 
-  // 分类
+  //  文章筛选分类
   cateadd()
   function cateadd() {
     $.ajax({
@@ -71,6 +72,7 @@ $(function () {
       limit: q.pagesize,
       curr: q.pagenum,
       layout: ['count', 'limit', 'prev', 'page', 'next', 'skip'],
+      limits: [2, 3, 5, 10],
       jump: function (obj, first) {
         q.pagenum = obj.curr
         q.pagesize = obj.limit
@@ -85,11 +87,11 @@ $(function () {
   $('body').on('click', '.delete-btn', function () {
     // 获取当前按钮的id
     var deleteId = $(this).attr('data-id')
-     // 获取当前页面上的删除按钮的个数
+    // 获取当前页面上的删除按钮的个数
     var deletebtnlen = $('.delete-btn').length
     // 弹出框 layui 
     layer.confirm('确定删除?', { icon: 3, title: '提示' }, function (index) {
-    // 获取后台的数据
+      // 获取后台的数据
       $.ajax({
         url: `/my/article/delete/${deleteId}`,
         type: 'GET',
