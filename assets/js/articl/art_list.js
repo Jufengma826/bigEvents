@@ -83,11 +83,13 @@ $(function () {
 
   //删除 动态删除 事件委托
   $('body').on('click', '.delete-btn', function () {
+    // 获取当前按钮的id
     var deleteId = $(this).attr('data-id')
+     // 获取当前页面上的删除按钮的个数
     var deletebtnlen = $('.delete-btn').length
-    console.log(deleteId);
+    // 弹出框 layui 
     layer.confirm('确定删除?', { icon: 3, title: '提示' }, function (index) {
-
+    // 获取后台的数据
       $.ajax({
         url: `/my/article/delete/${deleteId}`,
         type: 'GET',
@@ -97,6 +99,9 @@ $(function () {
           }
           layer.msg('删除成功')
           layer.close(index);
+
+          // 若页面上的删除按钮有1个 则pagenum -1 
+          // 若当前页面上的删除按钮多余1个 则pagenum不减1
           if (deletebtnlen === 1) {
             q.pagenum = q.pagenum == 1 ? 1 : q.pagenum - 1
           }
